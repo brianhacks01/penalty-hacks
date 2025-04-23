@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #000000, #1c1c1c);
+      background: linear-gradient(to bottom, #0b6623, #1c1c1c);
       color: #fff;
       margin: 0;
       padding: 0;
@@ -19,20 +19,20 @@
     }
     .container {
       text-align: center;
-      background: #121212;
+      background: #0b3d1a;
       padding: 40px;
       border-radius: 16px;
-      box-shadow: 0 0 20px rgba(255, 0, 79, 0.5);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       max-width: 400px;
     }
     h1 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
-      color: #ff004f;
+      color: #e6e600;
     }
     p {
       font-size: 1rem;
-      color: #aaa;
+      color: #ccc;
     }
     .input-section {
       margin-bottom: 2rem;
@@ -48,18 +48,18 @@
       color: #fff;
     }
     .submit-id-btn, .predict-btn, .create-account-btn {
-      background: #ff004f;
+      background: #e6e600;
       border: none;
       padding: 0.8rem 2rem;
       font-size: 1rem;
       border-radius: 10px;
-      color: white;
+      color: #000;
       cursor: pointer;
       margin-top: 1.2rem;
       transition: background 0.3s;
     }
     .submit-id-btn:hover, .predict-btn:hover, .create-account-btn:hover {
-      background: #e60045;
+      background: #cccc00;
     }
     .result {
       margin-top: 2rem;
@@ -74,6 +74,10 @@
       font-size: 1.1rem;
       margin-top: 1rem;
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   </style>
 </head>
 <body>
@@ -84,12 +88,12 @@
       <br />
       <button class="submit-id-btn" id="submitBtn" onclick="submitId()">Submit</button>
       <div class="error-message" id="errorMessage"></div>
-      <button class="create-account-btn hidden" onclick="createAccount()">Create new account</button>
+      <a href="https://affpa.top/L?tag=d_4299217m_2804c_&site=4299217&ad=2804&r=registration" class="create-account-btn hidden" id="createAccountBtn">Create new account</a>
     </div>
 
     <div id="predictSection" class="hidden">
-      <h1>Best Shot Direction</h1>
-      <p>Tap to reveal the best shot direction</p>
+      <h1>Next Shot Direction</h1>
+      <p>Tap the button to get your shot prediction</p>
       <button class="predict-btn" onclick="predict()">Predict Now</button>
       <div class="result" id="result"></div>
     </div>
@@ -106,9 +110,9 @@
       }
 
       if (!userId.startsWith("123")) {
-        document.getElementById("errorMessage").innerText = "You need to create new account and top up 200-300 sh. Use my promo code KN611 to get bonuses";
+        document.getElementById("errorMessage").innerText = "You need to create a new account";
         document.getElementById("submitBtn").classList.add("hidden");
-        document.querySelector(".create-account-btn").classList.remove("hidden");
+        document.getElementById("createAccountBtn").classList.remove("hidden");
         return;
       }
 
@@ -117,20 +121,9 @@
     }
 
     function predict() {
-      const directions = [
-        "Top Left \ud83d\udd3c\u2b05\ufe0f",
-        "Top Right \ud83d\udd3c\u27a1\ufe0f",
-        "Center \ud83c\udfaf",
-        "Bottom Left \ud83d\udd3b\u2b05\ufe0f",
-        "Bottom Right \ud83d\udd3b\u27a1\ufe0f"
-      ];
-      const randomIndex = Math.floor(Math.random() * directions.length);
-      const selected = directions[randomIndex];
-      document.getElementById('result').innerText = selected;
-    }
-
-    function createAccount() {
-      alert("Redirecting to account creation...");
+      const directions = ["Top Left", "Top Right", "Center", "Bottom Left", "Bottom Right"];
+      const choice = directions[Math.floor(Math.random() * directions.length)];
+      document.getElementById('result').innerText = `⚽ Shoot to: ${choice}`;
     }
   </script>
 </body>
